@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>HERO-SLAM: Hybrid Enhanced Robust Optimization of Neural SLAM</title>
+
+    <meta name="description" content="HERO-SLAM: Hybrid Enhanced Robust Optimization of Neural SLAM">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!--     <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+    <!--   <link rel="icon" type="image/png" href="img/seal_icon.png"> -->
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap-theme.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+     -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+
+    <script src="js/app.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-6YG67CMXFS"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-6YG67CMXFS');
+    </script> -->
+
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <h2 class="col-md-12 text-center">
+                HERO-SLAM: Hybrid Enhanced Robust Optimization of Neural SLAM<br>
+                <small>
+                    <a>Zhe Xin</a>,
+                    <a>Yufeng Yue</a>,
+                    <a>Liangjun Zhang</a>,
+                    <a>Chenming Wu</a>
+                    <br>
+                </small>
+                <small>
+                Accepted by ICRA'24
+                </small>
+            </h2>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 text-center">
+                <ul class="nav nav-pills nav-justified">
+                    <li>
+                        <a href="https://arxiv.org/abs/2407.18813">
+                            <image src="img/paperclip.png" height="60px">
+                                <h4><strong>PDF</strong></h4>
+                        </a>
+                    </li>
+                    <!-- <li>
+                        <a href="data/supp.pdf">
+                            <image src="img/supp_thumbnail.png" height="60px">
+                                <h4><strong>Supp</strong></h4>
+                        </a>
+                    </li> -->
+                    <li>
+
+                    </li>
+
+                    <!-- <li>
+                            <a href="https://youtu.be/c3Yx2nGvi8o">
+                            <image src="img/youtube_icon.png" height="60px"><br>
+                                <h4><strong>Video</strong></h4>
+                            </a>
+                        </li> -->
+                    <li>
+                        <a href="https://github.com/hero-slam/HERO-SLAM">
+                            <image src="img/github_pad.png" height="60px">
+                                <h4><strong>Code</strong></h4>
+                        </a>
+                    </li>
+                    <li></li>
+                    <li>
+                        <a href="https://hero-slam.github.io">
+                            <image src="img/drive_icon.png" height="60px">
+                                <h4><strong>Result(Coming)</strong></h4>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Abstract
+                </h3>
+
+                <p class="text-justify">
+                    Simultaneous Localization and Mapping (SLAM) plays a crucial role in numerous applications including robotics, autonomous driving, and virtual reality. However, the robustness of SLAM, particularly in challenging or data-limited situations, remains an unresolved issue. In this paper, we introduce HERO-SLAM, a Hybrid Enhanced Robust Optimization methodology for neural SLAM, which combines the benefits of neural implicit field and feature-metric optimization. This unique hybrid method offers increased robustness in challenging environments, such as those involving sudden viewpoint changes or sparse data collection intervals. We also propose a hybrid novel optimization pipeline to optimize the multi-resolution implicit fields. Our comprehensive experimental results on benchmarking datasets validate the effectiveness of our hybrid approach, demonstrating its superior performance over existing implicit field-based methods in challenging scenarios. Overall, HERO-SLAM opens a new pathway toward improving the stability, performance, and applicability of visual SLAM methods in real-world applications.
+                </p>
+                    <video id="v0" width="100%" autoplay loop muted controls>
+                        <source src="img/video.mp4" type="video/mp4" />
+                    </video>
+                    <h3>
+                    Pipeline
+                </h3>
+                <p>Every newly captured frame would be aligned with the last frame for the camera pose estimation using feature-metric warping losses. The robustness and accuracy of tracking get improved, which in turn, facilitates the enhancement of mapping quality by optimizing the neural implicit field of multi-resolution feature encoding. The mapping module optimizes all keyframes from the keyframe database based on photometric reconstruction and depth supervision, following the volumetric rendering paradigm.</p>
+                <image src="img/teaser.png" class="img-responsive" alt="overview">
+                <br>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Robustness of Neural SLAM
+                </h3>
+                <p class="text-justify">
+                    The visualization of mapping and tracking errors on Replica dataset of challenging sparse inputs with large motion changes. This paper introduces a robust system for real-time dense 3D reconstruction, dubbed HERO-SLAM, which synergistically leverages the capabilities of neural implicit fields and feature-metric optimization, demonstrating exceptional resilience to large viewpoint changes and ensuring efficient runtime performance.
+                </p>
+
+                <image src="img/fig_intro.png" style="width: 70%; margin-left: auto; margin-right: auto;" class="img-responsive" alt="kitti"></image>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Experiment Results
+                </h3>
+                <p class="text-justify">
+                    Qualitative visualization of results among different approaches. Our reconstructions are smoother, more complete, and have fewer artifacts compared to other advanced methods on the ScanNet dataset
+                </p>
+
+                <image src="img/fig_comparison.png" style="width: 70%; margin-left: auto; margin-right: auto;" class="img-responsive" alt="kitti"></image>
+
+                <p class="text-justify">
+                    Quantitative results of all eight scenes on the Replica dataset. Our method achieves better reconstruction quality and has the best average performance in all metrics, even with low-frequency image sequences.
+                </p>
+
+                <image src="img/tab1.png" style="width: 100%; margin-left: auto; margin-right: auto;" class="img-responsive" alt="kitti"></image>
+
+                <p>Reconstruction results on Replica dataset using
+                    NICE-SLAM's culling strategy (unit: cm).</p>
+                <image src="img/tab2.png" style="width: 70%; margin-left: auto; margin-right: auto;" class="img-responsive" alt="kitti"></image>
+
+                <p>Camera tracking results on TUM RGB-D dataset. Our method achieves the best performance and is robust to large view changes. Non-continuous scenes are marked with an asterisk. Trajectories with errors larger than 30 cm are denoted as FAILED across the paper.</p>
+                <image src="img/tab3.png" style="width: 70%; margin-left: auto; margin-right: auto;" class="img-responsive" alt="kitti"></image>
+
+                <p>Run-time, frame rate comparison, and pose estimation performance with different iterations when tracking.</p>
+                <image src="img/tab4.png" style="width: 70%; margin-left: auto; margin-right: auto;" class="img-responsive" alt="kitti"></image>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Acknowledgement
+                </h3>
+                <p class="text-justify">
+                    The website template was borrowed from <a href="http://mgharbi.com/">Michaël Gharbi</a> and <a
+                        href="https://bmild.github.io/">Ben Mildenhall</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
